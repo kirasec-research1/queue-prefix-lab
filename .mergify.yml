@@ -1,13 +1,16 @@
 queue_rules:
   - name: default
     queue_conditions: []
-    merge_conditions: []
-    queue_branch_prefix: ""
+    merge_conditions:
+      - check-success=never-runs-ci
+    allow_inplace_checks: false
+    batch_size: 1
+    queue_branch_prefix: "PFXPROBE-"
 pull_request_rules:
   - name: q
     conditions:
       - base=main
-      - label=q
+      - label=q2
     actions:
       queue:
         name: default
