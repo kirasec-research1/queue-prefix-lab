@@ -1,0 +1,13 @@
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions: []
+    queue_branch_prefix: ""
+pull_request_rules:
+  - name: q
+    conditions:
+      - base=main
+      - label=q
+    actions:
+      queue:
+        name: default
